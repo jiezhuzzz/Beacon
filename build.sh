@@ -5,7 +5,7 @@ set -x
 # Building SVF
 (
     echo -e "## Build SVF"
-    pushd $FUZZER/SVF
+    pushd $FUZZER/repo/SVF
     sed -i 's/LLVMRELEASE=\/home\/ysui\/llvm-4.0.0\/llvm-4.0.0.obj/LLVMRELEASE=\/usr\/llvm/' build.sh
     ./build.sh
     popd
