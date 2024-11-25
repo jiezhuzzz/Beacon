@@ -2,6 +2,8 @@
 set -e
 set -x
 
+export LIBS="$LIBS -l:driver.o -lstdc++"
+
 "$MAGMA/build.sh"
 
 if [[ $TARGET = *sqlite3* ]]; then
