@@ -21,8 +21,8 @@ set -x
         -DENABLE_KLEE_ASSERTS=ON \
         -DCMAKE_BUILD_TYPE=Release \
         -DLLVM_CONFIG_BINARY=/usr/bin/llvm-config \
-        -DSVF_ROOT_DIR=${FUZZER}/SVF \
-        -DSVF_LIB_DIR=${FUZZER}/SVF/Release-build/lib \
+        -DSVF_ROOT_DIR=${FUZZER}/repo/SVF \
+        -DSVF_LIB_DIR=${FUZZER}/repo/SVF/Release-build/lib \
         ..
     make -j
     mv bin/precondInfer $OUT/
