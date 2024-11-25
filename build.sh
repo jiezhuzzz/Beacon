@@ -14,9 +14,8 @@ set -x
 # Building precondInfer
 (
     echo -e "## Build precondInfer"
-    pushd $FUZZER/precondInfer
-    mkdir -p build 
-    pushd build
+    mkdir -p $FUZZER/precondInfer/build
+    pushd $FUZZER/precondInfer/build
     cmake \
         -DENABLE_KLEE_ASSERTS=ON \
         -DCMAKE_BUILD_TYPE=Release \
@@ -25,23 +24,20 @@ set -x
         -DSVF_LIB_DIR=${FUZZER}/repo/SVF/Release-build/lib \
         ..
     make -j
-    mv bin/precondInfer $OUT/
-    popd
+    cp bin/precondInfer $OUT/
     popd
 )
 
 # Building Ins
 (
     echo -e "## Build Ins"
-    pushd $FUZZER/Ins
-    mkdir -p build 
-    pushd build
+    mkdir -p $FUZZER/Ins/build
+    pushd $FUZZER/Ins/build
     CXXFLAGS="-fno-rtti" cmake \
         -DLLVM_DIR=/usr/lib/cmake/llvm/ \
         -DCMAKE_BUILD_TYPE=Release \
         ..
     make -j
-    mv bin/Ins $OUT/
-    popd
+    cp Ins $OUT/
     popd
 )
